@@ -1,0 +1,15 @@
+{
+  "name": "srmmessfoodgeneric",
+  "version": "1.0.0",
+  "description": "This is a generic API for basic info",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "T R Rohith",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}
