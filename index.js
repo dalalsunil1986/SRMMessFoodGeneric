@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 
-app.set('port', (process.env.PORT || 1911))
+app.set('port', (process.env.PORT || 2050))
 
 //serve static files in the public directory
 app.use(express.static('public'));
