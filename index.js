@@ -35,7 +35,7 @@ app.get('/messNames', function(req, res){
             for (var key in result) {
                 messNamesArray.push(result[key].name);
             }
-            res.send(messNamesArray);
+            res.send(JSON.stringify(messNamesArray));
         });
 })
 // Spin up the server
