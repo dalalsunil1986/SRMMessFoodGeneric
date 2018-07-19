@@ -31,6 +31,7 @@ app.get('/', function (req, res) {
 //send mess array
 app.get('/messNames', function(req, res){
         con.query(`SELECT name FROM mess`, function (err, result, fields) {
+            var messNamesArray = [];
             if (err) throw err;
             for (var key in result) {
                 messNamesArray.push(result[key].name);
