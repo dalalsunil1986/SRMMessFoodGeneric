@@ -30,16 +30,34 @@ app.get('/', function (req, res) {
 });
 //send mess array
 app.get('/messNames', function(req, res){
-        con.query(`SELECT name FROM mess`, function (err, result, fields) {
-            var messNamesArray = [];
-            if (err) throw err;
-            for (var key in result) {
-                messNamesArray.push(result[key].name);
-            }
-            res.setHeader(`Access-Control-Allow-Origin` , `*`);
-            res.setHeader(`Access-Control-Allow-Methods`, `POST, GET, OPTIONS, PUT`);
-            res.send(JSON.stringify(messNamesArray));
-        });
+    con.query(`SELECT name FROM mess`, function (err, result, fields) {
+        var messNamesArray = [];
+        if (err) throw err;
+        for (var key in result) {
+            messNamesArray.push(result[key].name);
+        }
+        res.setHeader(`Access-Control-Allow-Origin` , `*`);
+        res.setHeader(`Access-Control-Allow-Methods`, `POST, GET, OPTIONS, PUT`);
+        res.send(JSON.stringify(messNamesArray));
+    });
+})
+//send particular day
+app.get('/:messName/:day', function(req, res){
+    var messName = req.params.messName;
+    var day = req.params.day;
+    con.query(`SELECT * FROM ${messName} where day = '${day}'`, function (err, result, fields) {
+        var messNamesArray = [];
+        if (err) throw err;
+        for (var key in result) {
+            messNamesArray.push(result[key].breakfast);
+            messNamesArray.push(result[key].lunch);
+            messNamesArray.push(result[key].snacks);
+            messNamesArray.push(result[key].dinner);
+        }
+        res.setHeader(`Access-Control-Allow-Origin` , `*`);
+        res.setHeader(`Access-Control-Allow-Methods`, `POST, GET, OPTIONS, PUT`);
+        res.send(JSON.stringify(messNamesArray));
+    });
 })
 // Spin up the server
 app.listen(app.get('port'), function () {
