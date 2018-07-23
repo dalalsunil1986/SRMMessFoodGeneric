@@ -36,6 +36,8 @@ app.get('/messNames', function(req, res){
             for (var key in result) {
                 messNamesArray.push(result[key].name);
             }
+            res.setHeader(`Access-Control-Allow-Origin` , `*`);
+            res.setHeader(`Access-Control-Allow-Methods`, `POST, GET, OPTIONS, PUT`);
             res.send(JSON.stringify(messNamesArray));
         });
 })
