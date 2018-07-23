@@ -58,6 +58,15 @@ app.get('/:messName/:day', function(req, res){
         res.setHeader(`Access-Control-Allow-Methods`, `POST, GET, OPTIONS, PUT`);
         res.send(JSON.stringify(messNamesArray));
     });
+})//send particular day
+app.post('/feedback', function(req, res){
+    var messName = req.body.messName;
+    var feedback = req.body.feedback;
+    con.query(`insert into feedback(MessName,Feedback) VALUES('${messName}','${feedback}')`, function (err, result, fields) {
+        res.setHeader(`Access-Control-Allow-Origin` , `*`);
+        res.setHeader(`Access-Control-Allow-Methods`, `POST, GET, OPTIONS, PUT`);
+        res.send("1");
+    });
 })
 // Spin up the server
 app.listen(app.get('port'), function () {
